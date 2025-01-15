@@ -1,0 +1,12 @@
+{
+  "HTTP handle function": {
+    "prefix": "handlefunc",
+    "body": [
+      "func $1() http.HandlerFunc {",
+      "\treturn func(w http.ResponseWriter, r *http.Request) {",
+      "\t\t$2",
+      "\t}",
+      "}"
+    ]
+  }
+}
