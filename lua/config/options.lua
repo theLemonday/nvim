@@ -91,3 +91,11 @@ vim.g.loaded_perl_provider = 0
 -- 	update_in_insert = false,
 -- 	severity_sort = false,
 -- })
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- Enable spell check
+-- vim.opt.spell = true
+-- vim.opt.spelllang = { "en_us" }

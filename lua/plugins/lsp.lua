@@ -128,6 +128,7 @@ return {
 
 		require("mason-tool-installer").setup({
 			ensure_installed = {
+				"golines",
 				"djlint",
 				"yamlfix",
 				"ansiblels",

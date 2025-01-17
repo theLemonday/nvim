@@ -27,7 +27,10 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			enabled = function()
-				return not vim.tbl_contains({ "oil", "snacks_input", "TelescopePrompt" }, vim.bo.filetype)
+				return not vim.tbl_contains(
+					{ "oil", "snacks_picker_input", "snacks_input", "TelescopePrompt" },
+					vim.bo.filetype
+				)
 			end,
 			-- 'default' for mappings similar to built-in completion
 			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
