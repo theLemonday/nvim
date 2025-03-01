@@ -37,3 +37,9 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEn
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = vim.lsp.buf.format })
+
+-- vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+-- 	callback = function()
+-- 		vim.cmd([[Trouble qflist open]])
+-- 	end,
+-- })

@@ -48,11 +48,11 @@ return {
 				nerd_font_variant = "mono",
 			},
 
+			cmdline = { sources = {} },
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
-				cmdline = {},
 				providers = {
 					lazydev = {
 						name = "LazyDev",

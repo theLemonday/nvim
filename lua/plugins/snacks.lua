@@ -12,6 +12,52 @@ return {
 			bigfile = { enabled = true },
 			dashboard = {
 				enabled = true,
+				preset = {
+					keys = {
+						{
+							icon = " ",
+							key = "f",
+							desc = "Find File",
+							action = ":lua Snacks.dashboard.pick('files')",
+						},
+						{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+						{
+							icon = " ",
+							key = "g",
+							desc = "Find Text",
+							action = ":lua Snacks.dashboard.pick('live_grep')",
+						},
+						{
+							icon = " ",
+							key = "r",
+							desc = "Recent Files",
+							action = ":lua Snacks.dashboard.pick('oldfiles')",
+						},
+						{
+							icon = " ",
+							key = "c",
+							desc = "Config",
+							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						},
+						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+						{
+							icon = "󰒲 ",
+							key = "L",
+							desc = "Lazy",
+							action = ":Lazy",
+							enabled = package.loaded.lazy ~= nil,
+						},
+						{
+							icon = "󰋜 ",
+							key = "h",
+							desc = "Find files (home-manager)",
+							action = function()
+								Snacks.picker.files({ cwd = "~/.config/home-manager/" })
+							end,
+						},
+						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+					},
+				},
 				sections = {
 					{ section = "header" },
 					{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
@@ -36,7 +82,7 @@ return {
 			{
 				"<leader><space>",
 				function()
-					Snacks.picker.buffers()
+					Snacks.picker.smart()
 				end,
 				desc = "[ ] existing buffers",
 			},
@@ -109,7 +155,7 @@ return {
 			{
 				"<leader>ss",
 				function()
-					Snacks.picker.lsp_symbols()
+					Snacks.picker.lsp_workspace_symbols()
 				end,
 				desc = "LSP [s]ymbols",
 			},

@@ -6,19 +6,16 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		{ "fredrikaverpil/neotest-golang", version = "*" },
+		"folke/trouble.nvim",
 	},
 	opts = {
 		adapters = {},
 		status = { virtual_text = true },
 		output = { open_on_run = true },
 		quickfix = {
-			open = function()
-				if pcall(require, "trouble.nvim") then
-					require("trouble").open({ mode = "quickfix", focus = false })
-				else
-					vim.cmd("copen")
-				end
-			end,
+			-- open = function()
+			-- 	require("trouble").open({ mode = "quickfix", focus = false })
+			-- end,
 		},
 	},
 	config = function(_, opts)
