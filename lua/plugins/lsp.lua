@@ -126,171 +126,56 @@ return {
 			end,
 		})
 
+		local ensure_installed_tools = {
+			"systemdlint",
+			"markdownlint",
+			"djlint",
+			"yamlfix",
+			"golines",
+			"gofumpt",
+			"goimports",
+			"stylua",
+			"hadolint",
+			"eslint",
+			"sql-formatter",
+			"prettierd",
+			"nixpkgs-fmt",
+			"shfmt",
+			"ansible-lint",
+		}
 		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"markdownlint",
-				"golines",
-				"djlint",
-				"yamlfix",
-				"ansiblels",
-				"gopls",
-				"gofumpt",
-				"goimports",
-				"stylua",
-				"lua-language-server",
-				"hadolint",
-				"eslint",
-				"sql-formatter",
-				"typescript-language-server",
-				"svelte-language-server",
-				"prettierd",
-				"nixpkgs-fmt",
-				-- "tailwindcss-language-server",
-				"buf",
-				"sqlls",
-				-- "pyright",
-				"ruff",
-				"shfmt",
-				"python-lsp-server",
-				"nil",
-				"templ",
-			},
+			ensure_installed = ensure_installed_tools,
 		})
 
-		local servers = {
-			templ = {},
-			lua_ls = {},
-			jsonls = {
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas({
-							extra = {
-								{
-									description = "App script config file",
-									name = "appsscript.json",
-									fileMatch = { "appsscript.json" },
-									url = "https://json.schemastore.org/appsscript",
-								},
-								{
-									description = "Clasp config file",
-									name = ".clasp.json",
-									fileMatch = { ".clasp.json" },
-									url = "https://json.schemastore.org/clasp",
-								},
-							},
-						}),
-						validate = { enable = true },
-					},
-				},
-			},
-			yamlls = {
-				settings = {
-					yaml = {
-						schemaStore = {
-							-- You must disable built-in schemaStore support if you want to use
-							-- this plugin and its advanced options like `ignore`.
-							enable = false,
-							-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-							url = "",
-						},
-						schemas = require("schemastore").yaml.schemas(),
-					},
-				},
-			},
-			dockerls = {},
-			terraformls = {},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							ruff = {
-								enabled = true, -- Enable the plugin
-								formatEnabled = true, -- Enable formatting using ruffs formatter
-								-- executable = "<path-to-ruff-bin>", -- Custom path to ruff
-								-- config = "<path_to_custom_ruff_toml>", -- Custom config for ruff to use
-								extendSelect = { "I" }, -- Rules that are additionally used by ruff
-								extendIgnore = { "C90" }, -- Rules that are additionally ignored by ruff
-								format = { "I" }, -- Rules that are marked as fixable by ruff that should be fixed when running textDocument/formatting
-								severities = { ["D212"] = "I" }, -- Optional table of rules where a custom severity is desired
-								unsafeFixes = false, -- Whether or not to offer unsafe fixes as code actions. Ignored with the "Fix All" action
-
-								-- Rules that are ignored when a pyproject.toml or ruff.toml is present:
-								lineLength = 88, -- Line length to pass to ruff checking and formatting
-								exclude = { "__about__.py" }, -- Files to be excluded by ruff checking
-								select = { "F" }, -- Rules to be enabled by ruff
-								ignore = { "D210" }, -- Rules to be ignored by ruff
-								perFileIgnores = {
-									["__init__.py"] = "CPY001",
-								}, -- Rules that should be ignored for specific files
-								preview = false, -- Whether to enable the preview style linting and formatting.
-								targetVersion = "py310", -- The minimum python version to target (applies for both linting and formatting).
-							},
-						},
-					},
-				},
-			},
-			ruff = {},
-			nil_ls = {},
-			sqlls = {},
-			gopls = {
-				settings = {
-					gopls = {
-						gofumpt = true,
-						codelenses = {
-							gc_details = false,
-							generate = true,
-							regenerate_cgo = true,
-							run_govulncheck = true,
-							test = true,
-							tidy = true,
-							upgrade_dependency = true,
-							vendor = true,
-						},
-						hints = {
-							assignVariableTypes = true,
-							compositeLiteralFields = true,
-							compositeLiteralTypes = true,
-							constantValues = true,
-							functionTypeParameters = true,
-							parameterNames = true,
-							rangeVariableTypes = true,
-						},
-						analyses = {
-							-- fieldalignment = true,
-							nilness = true,
-							unusedparams = true,
-							unusedwrite = true,
-							useany = true,
-						},
-						usePlaceholders = true,
-						completeUnimported = true,
-						staticcheck = true,
-						directoryFilters = {
-							"-.git",
-							"-.vscode",
-							"-.idea",
-							"-.vscode-test",
-							"-node_modules",
-						},
-						semanticTokens = true,
-					},
-				},
-			},
-		}
 		vim.lsp.config("*", {
 			root_markers = { ".git" },
 		})
-		-- vim.lsp.enable("gopls")
-		-- vim.lsp.enable("lua_ls")
+
+		local ensure_installed = {
+			"ansiblels",
+			"basedpyright",
+			"dockerls",
+			"gopls",
+			"jsonls",
+			"lua_ls",
+			"nil_ls",
+			"pylsp",
+			"sqlls",
+			"templ",
+			"terraformls",
+			"yamlls",
+		}
+		vim.lsp.enable(ensure_installed)
 
 		require("mason-lspconfig").setup({
+			ensure_installed = ensure_installed,
+			automatic_installation = true,
 			handlers = {
 				function(server_name)
-					local config = servers[server_name] or {}
-					-- passing config.capabilities to blink.cmp merges with the capabilities in your
-					-- `opts[server].capabilities, if you've defined it
-					config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-					require("lspconfig")[server_name].setup(config)
+					local lspconfig = require("lspconfig")
+					local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+					lspconfig[server_name].setup({ capabilities = capabilities })
 				end,
 			},
 		})
