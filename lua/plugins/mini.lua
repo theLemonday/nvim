@@ -8,7 +8,6 @@ return {
 		require("mini.statusline").setup()
 		require("mini.icons").setup()
 		require("mini.surround").setup({ n_lines = 50 })
-		-- require("mini.bracketed").setup()
 		require("mini.pairs").setup()
 
 		-- Better Around/Inside textobjects
@@ -29,23 +28,5 @@ return {
 				["|"] = gen_spec.pair("|", "|", { type = "non-balanced" }),
 			},
 		})
-
-		-- require("mini.files").setup({ mappings = { synchronize = "-" }, options = { permanent_delete = false } })
-		-- local Snacks = require("snacks")
-		-- vim.api.nvim_create_autocmd("User", {
-		-- 	pattern = "MiniFilesActionRename",
-		-- 	callback = function(event)
-		-- 		Snacks.rename.on_rename_file(event.data.from, event.data.to)
-		-- 	end,
-		-- })
 	end,
-	-- keys = {
-	-- 	{
-	-- 		"-",
-	-- 		function()
-	-- 			require("mini.files").open()
-	-- 		end,
-	-- 		desc = "Open mini files explorer",
-	-- 	},
-	-- },
 }

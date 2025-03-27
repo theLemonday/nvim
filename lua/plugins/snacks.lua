@@ -9,6 +9,7 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+			lazygit = { enabled = true },
 			bigfile = { enabled = true },
 			dashboard = {
 				enabled = true,
@@ -94,21 +95,21 @@ return {
 				end,
 				desc = "[g]o [d]efinitions",
 			},
-			{
-				"gr",
-				function()
-					Snacks.picker.lsp_references()
-				end,
-				nowait = true,
-				desc = "[g]o [r]eferences",
-			},
-			{
-				"gI",
-				function()
-					Snacks.picker.lsp_implementations()
-				end,
-				desc = "[g]o [I]mplementation",
-			},
+			-- {
+			-- 	"gr",
+			-- 	function()
+			-- 		Snacks.picker.lsp_references()
+			-- 	end,
+			-- 	nowait = true,
+			-- 	desc = "[g]o [r]eferences",
+			-- },
+			-- {
+			-- 	"gI",
+			-- 	function()
+			-- 		Snacks.picker.lsp_implementations()
+			-- 	end,
+			-- 	desc = "[g]o [I]mplementation",
+			-- },
 			{
 				"gy",
 				function()

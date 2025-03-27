@@ -8,16 +8,12 @@ return {
 			-- refer to the configuration section below
 			spec = {
 				{ "<leader>f", group = "[F]ile/[F]ind" },
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>r", group = "[R]ename" },
+				{ "<leader>g", group = "[G]it" },
 				{ "<leader>s", group = "[s]earch" },
 				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle/[T]est" },
+				{ "<leader>t", group = "[T]ogle/[T]est" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>x", group = "Quickfi[X]" },
-				{ "<leader>n", group = "[N]ote" },
-				{ "<leader>nc", group = "[N]ote [C]reate" },
 			},
 		},
 		keys = {
