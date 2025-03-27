@@ -25,6 +25,29 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{
+			"cenk1cenk2/schema-companion.nvim",
+			dependencies = {
+				{ "nvim-lua/plenary.nvim" },
+				{ "nvim-telescope/telescope.nvim" },
+			},
+			config = function()
+				require("schema-companion").setup({
+					-- if you have telescope you can register the extension
+					enable_telescope = true,
+					matchers = {
+						-- add your matchers
+						require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
+					},
+					schemas = {
+						{
+							name = "Kubernetes master",
+							uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json",
+						},
+					},
+				})
+			end,
+		},
 	},
 	config = function()
 		--  This function gets run when an LSP attaches to a particular buffer.
@@ -69,14 +92,6 @@ return {
 				--  Similar to document symbols, except searches over your entire project.
 				-- map("<leader>ws", require("fzf-lua").lsp_live_workspace_symbols, "[W]orkspace [S]ymbols")
 
-				-- Rename the variable under your cursor.
-				--  Most Language Servers support renaming across files, etc.
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-				-- Execute a code action, usually your cursor needs to be on top of an error
-				-- or a suggestion from your LSP for this to activate.
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-
 				-- Opens a popup that displays documentation about the word under your cursor
 				--  See `:help K` for why this keymap.
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -91,14 +106,11 @@ return {
 				--
 				-- When you move your cursor, the highlights will be cleared (the second autocommand).
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.server_capabilities.documentHighlightProvider then
+				if
+					client
+					and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+				then
 					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-						buffer = event.buf,
-						group = highlight_augroup,
-						callback = vim.lsp.buf.document_highlight,
-					})
-
 					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 						buffer = event.buf,
 						group = highlight_augroup,
@@ -118,7 +130,7 @@ return {
 				-- code, if the language server you are using supports them
 				--
 				-- This may be unwanted, since they displace some of your code
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+				if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")

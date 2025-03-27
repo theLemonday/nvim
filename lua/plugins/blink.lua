@@ -48,7 +48,6 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			cmdline = { sources = {} },
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
@@ -77,16 +76,20 @@ return {
 				ghost_text = { enabled = true },
 				menu = {
 					draw = {
-						-- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", "source_name" } },
-						treesitter = { "lsp" },
 						components = {
 							kind_icon = {
-								ellipsis = false,
 								text = function(ctx)
 									local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
 									return kind_icon
 								end,
-								-- Optionally, you may also use the highlights from mini.icons
+								-- (optional) use highlights from mini.icons
+								highlight = function(ctx)
+									local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+									return hl
+								end,
+							},
+							kind = {
+								-- (optional) use highlights from mini.icons
 								highlight = function(ctx)
 									local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
 									return hl

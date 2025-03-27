@@ -84,13 +84,11 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
--- vim.diagnostic.config({
--- 	virtual_text = true,
--- 	signs = true,
--- 	underline = true,
--- 	update_in_insert = false,
--- 	severity_sort = false,
--- })
+vim.diagnostic.config({
+	virtual_lines = {
+		current_line = true,
+	},
+})
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
