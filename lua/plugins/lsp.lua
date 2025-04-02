@@ -154,6 +154,8 @@ return {
 			"nixpkgs-fmt",
 			"shfmt",
 			"ansible-lint",
+			"shellcheck",
+			"dotenv-linter",
 		}
 		require("mason-tool-installer").setup({
 			ensure_installed = ensure_installed_tools,

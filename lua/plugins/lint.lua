@@ -10,6 +10,7 @@ return {
 				ansible = { "ansible_lint" },
 				jinja = { "djlint" },
 				systemd = { "systemdlint" },
+				dotenv = { "dotenv_linter" },
 			}
 
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,
