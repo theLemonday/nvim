@@ -167,17 +167,18 @@ return {
 
 		local ensure_installed = {
 			"ansiblels",
-			"basedpyright",
+			-- "basedpyright",
+			"pylsp",
 			"dockerls",
 			"gopls",
 			"jsonls",
 			"lua_ls",
 			"nil_ls",
-			"pylsp",
 			"sqlls",
 			"templ",
 			"terraformls",
 			"yamlls",
+			"ruff",
 		}
 		vim.lsp.enable(ensure_installed)
 
