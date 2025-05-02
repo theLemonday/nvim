@@ -43,3 +43,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callba
 -- 		vim.cmd([[Trouble qflist open]])
 -- 	end,
 -- })
+--

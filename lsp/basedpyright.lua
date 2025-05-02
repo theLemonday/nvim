@@ -6,7 +6,7 @@ return {
 				reportMissingTypeAnnotation = "none",
 			},
 			python = {
-				pythonPath = "./venv/bin/python",
+				pythonPath = "./.venv/bin/python",
 			},
 		},
 	},

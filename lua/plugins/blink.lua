@@ -1,5 +1,14 @@
 return {
 	{
+		"Exafunction/windsurf.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	},
+	{
 		"saghen/blink.compat",
 		-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
 		version = "*",
@@ -13,7 +22,9 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			{ "rafamadriz/friendly-snippets" },
-			{ "Exafunction/codeium.nvim" },
+			{
+				"Exafunction/windsurf.nvim",
+			},
 		},
 
 		-- use a release tag to download pre-built binaries
@@ -51,7 +62,7 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown", "codeium" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
@@ -59,11 +70,7 @@ return {
 						-- make lazydev completions top priority (see `:h blink.cmp`)
 						score_offset = 100,
 					},
-					-- codeium = {
-					-- 	name = "codeium",
-					-- 	module = "blink.compat.source",
-					-- 	score_offset = 10,
-					-- },
+					codeium = { name = "Codeium", module = "codeium.blink", async = true },
 					markdown = {
 						name = "RenderMarkdown",
 						module = "render-markdown.integ.blink",

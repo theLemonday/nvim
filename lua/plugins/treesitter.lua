@@ -17,7 +17,7 @@ local ensure_installed = {
 	"lua",
 	"luadoc",
 	"markdown",
-	"latex",
+	-- "latex",
 	"python",
 	"terraform",
 	"toml",
@@ -32,7 +32,7 @@ local ensure_installed = {
 }
 
 return {
-	{ -- Highlight, edit, and navigate code
+	{              -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",

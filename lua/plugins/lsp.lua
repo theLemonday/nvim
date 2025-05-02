@@ -185,14 +185,14 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = ensure_installed,
 			automatic_installation = true,
-			handlers = {
-				function(server_name)
-					local lspconfig = require("lspconfig")
-					local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-					lspconfig[server_name].setup({ capabilities = capabilities })
-				end,
-			},
+			-- handlers = {
+			-- 	function(server_name)
+			-- 		local lspconfig = require("lspconfig")
+			-- 		local capabilities = require("blink.cmp").get_lsp_capabilities()
+			--
+			-- 		lspconfig[server_name].setup({ capabilities = capabilities })
+			-- 	end,
+			-- },
 		})
 	end,
 }
