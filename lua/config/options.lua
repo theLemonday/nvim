@@ -27,8 +27,8 @@ if vim.fn.has("wsl") == 1 then
 			["*"] = "clip.exe",
 		},
 		paste = {
-			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
 		},
 		cache_enabled = 0,
 	}
@@ -100,3 +100,14 @@ vim.opt.cmdheight = 2
 -- Enable spell check
 -- vim.opt.spell = true
 -- vim.opt.spelllang = { "en_us" }
+
+local vietnameseKeyboard = "vietnamese-telex_utf-8"
+vim.api.nvim_create_user_command("ToggleVietnameseKeyboard", function()
+	if vim.o.keymap == vietnameseKeyboard then
+		vim.o.keymap = nil
+	else
+		vim.o.keymap = vietnameseKeyboard
+	end
+end, {})
+
+-- vim.opt.scrolloff = 999

@@ -2,7 +2,14 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	local out = vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable",
+		lazyrepo,
+		lazypath,
+	})
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
@@ -45,7 +52,9 @@ require("lazy").setup({
 			"folke/tokyonight.nvim",
 			lazy = true,
 			priority = 1000,
-			opts = { transparent = true },
+			opts = {
+				-- transparent = true,
+			},
 			init = function()
 				vim.cmd([[colorscheme tokyonight]])
 				-- local timer = vim.uv.new_timer()
@@ -76,9 +85,7 @@ require("lazy").setup({
 			name = "catppuccin",
 			priority = 1000,
 			opts = { transparent_background = true },
-			init = function()
-				vim.cmd.colorscheme("catppuccin")
-			end,
+			init = function() vim.cmd.colorscheme("catppuccin") end,
 		},
 
 		-- import your plugins

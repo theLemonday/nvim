@@ -6,7 +6,10 @@ vim.api.nvim_create_autocmd("User", {
 	callback = function(opts)
 		if opts.data.saved_buffer ~= nil then
 			local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
-			vim.notify("AutoSave: saved " .. filename .. " at " .. vim.fn.strftime("%H:%M:%S"), vim.log.levels.INFO)
+			vim.notify(
+				"AutoSave: saved " .. filename .. " at " .. vim.fn.strftime("%H:%M:%S"),
+				vim.log.levels.INFO
+			)
 		end
 	end,
 })
@@ -22,7 +25,7 @@ return {
 			local utils = require("auto-save.utils.data")
 
 			-- don't save for file types
-			if utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil" }) then
+			if utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil", "markdown" }) then
 				return true
 			end
 			return false

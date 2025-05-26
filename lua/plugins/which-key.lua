@@ -14,14 +14,13 @@ return {
 				{ "<leader>t", group = "[T]ogle/[T]est" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>x", group = "Quickfi[X]" },
+				{ "<leader>d", group = "[D]ebug" },
 			},
 		},
 		keys = {
 			{
 				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
+				function() require("which-key").show({ global = false }) end,
 				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},

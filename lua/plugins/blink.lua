@@ -4,9 +4,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require("codeium").setup({})
-		end,
+		config = function() require("codeium").setup({}) end,
 	},
 	{
 		"saghen/blink.compat",
@@ -62,7 +60,7 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown", "codeium" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
@@ -86,7 +84,8 @@ return {
 						components = {
 							kind_icon = {
 								text = function(ctx)
-									local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+									local kind_icon, _, _ =
+										require("mini.icons").get("lsp", ctx.kind)
 									return kind_icon
 								end,
 								-- (optional) use highlights from mini.icons

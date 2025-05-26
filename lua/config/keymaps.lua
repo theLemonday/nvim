@@ -5,7 +5,12 @@
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set(
+	"n",
+	"<leader>e",
+	vim.diagnostic.open_float,
+	{ desc = "Show diagnostic [E]rror messages" }
+)
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -13,7 +18,7 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -37,3 +42,5 @@ vim.keymap.set("n", "_", "<C-x>", opts)
 
 --select all
 vim.keymap.set("n", "<C-a>", "ggVG", opts)
+-- vim.keymap.set("n", "k", "kzz", opts)
+-- vim.keymap.set("n", "j", "jzz", opts)

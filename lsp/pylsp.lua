@@ -1,4 +1,5 @@
 return {
+	root_markers = { ".venv", "requirements.txt" },
 	settings = {
 		pylsp = {
 			plugins = {
@@ -10,8 +11,8 @@ return {
 				pylsp_mypy = { enabled = false },
 				pylsp_black = { enabled = false },
 				pylsp_isort = { enabled = false },
-				rope = { enabled = true },
-				ruff={enabled=true},
+				rope_autoimport = { enabled = true },
+				-- ruff = { enabled = true },
 			},
 		},
 	},
