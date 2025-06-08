@@ -1,11 +1,11 @@
 return {
-	{
-		"Exafunction/windsurf.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = function() require("codeium").setup({}) end,
-	},
+	-- {
+	-- 	"Exafunction/windsurf.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	config = function() require("codeium").setup({}) end,
+	-- },
 	{
 		"saghen/blink.compat",
 		-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
@@ -19,6 +19,7 @@ return {
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
+			{ "samiulsami/cmp-go-deep", dependencies = { "kkharji/sqlite.lua" } },
 			{ "rafamadriz/friendly-snippets" },
 			{
 				"Exafunction/windsurf.nvim",
@@ -60,8 +61,19 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer", "markdown" },
+				default = { "lazydev", "lsp", "go_deep", "path", "snippets", "buffer", "markdown" },
 				providers = {
+					go_deep = {
+						name = "go_deep",
+						module = "blink.compat.source",
+						min_keyword_length = 3,
+						max_items = 5,
+						---@module "cmp_go_deep"
+						---@type cmp_go_deep.Options
+						opts = {
+							-- See below for configuration options
+						},
+					},
 					lazydev = {
 						name = "LazyDev",
 						module = "lazydev.integrations.blink",
