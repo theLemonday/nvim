@@ -39,12 +39,7 @@ return {
 							version = "master",
 						}),
 					},
-					schemas = {
-						{
-							name = "Kubernetes master",
-							uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json",
-						},
-					},
+					schemas = {},
 				})
 			end,
 		},
@@ -149,13 +144,5 @@ return {
 			"harper_ls",
 		}
 		vim.lsp.enable(ensure_installed)
-
-		-- local lspconfig = require("lspconfig")
-		-- for server, config in pairs(opts.servers) do
-		-- 	-- passing config.capabilities to blink.cmp merges with the capabilities in your
-		-- 	-- `opts[server].capabilities, if you've defined it
-		-- 	config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-		-- 	lspconfig[server].setup(config)
-		-- end
 	end,
 }

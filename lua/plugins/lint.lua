@@ -6,6 +6,7 @@ return {
 			local lint = require("lint")
 			lint.linters_by_ft = {
 				markdown = { "markdownlint" },
+				sql = { "sqlfluff" },
 				sh = { "shellcheck" },
 				ansible = { "ansible_lint" },
 				jinja = { "djlint" },

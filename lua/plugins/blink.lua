@@ -1,11 +1,4 @@
 return {
-	-- {
-	-- 	"Exafunction/windsurf.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	config = function() require("codeium").setup({}) end,
-	-- },
 	{
 		"saghen/blink.compat",
 		-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
@@ -21,6 +14,13 @@ return {
 		dependencies = {
 			{ "samiulsami/cmp-go-deep", dependencies = { "kkharji/sqlite.lua" } },
 			{ "rafamadriz/friendly-snippets" },
+			{
+				"L3MON4D3/LuaSnip",
+				-- follow latest release.
+				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+				-- install jsregexp (optional!).
+				build = "make install_jsregexp",
+			},
 			{
 				"Exafunction/windsurf.nvim",
 			},
