@@ -13,6 +13,7 @@ return {
 				systemd = { "systemdlint" },
 				dotenv = { "dotenv_linter" },
 				yaml = { "yamllint" },
+				groovy = { "npm-groovy-lint" },
 			}
 
 			lint.linters.markdownlint.args = { "--config", vim.fn.expand("~/.markdownlint.json") }

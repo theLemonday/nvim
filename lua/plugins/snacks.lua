@@ -25,8 +25,8 @@ return {
 						},
 						{
 							icon = " ",
-							key = "n",
-							desc = "New File",
+							key = "c",
+							desc = "Create New File",
 							action = ":ene | startinsert",
 						},
 						{
@@ -43,8 +43,8 @@ return {
 						},
 						{
 							icon = " ",
-							key = "c",
-							desc = "Config",
+							key = "n",
+							desc = "Neovim Config",
 							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 						},
 						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },

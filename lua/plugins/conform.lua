@@ -17,6 +17,7 @@ return {
 			-- buf = { "buf" },
 			javascript = { "prettierd" },
 			typescript = { "prettierd" },
+			typescriptreact = { "prettierd" },
 			sql = { "sql_formatter" },
 			-- sql = { "sqlfluff" },
 			bash = { "shfmt" },
@@ -28,6 +29,7 @@ return {
 			-- templ = { "templ" },
 			json = { "prettierd" },
 			markdown = { "prettierd" },
+			groovy = { "npm-groovy-lint" },
 		},
 		format_on_save = function(bufnr)
 			local max_lines = 5000
@@ -35,7 +37,7 @@ return {
 			if line_count > max_lines then
 				return -- Do not format this buffer
 			end
-			return { timeout_ms = 500, lsp_fallback = true }
+			return { timeout_ms = 2000, lsp_fallback = true }
 		end,
 		formatters = {
 			yamlfix = {
@@ -54,6 +56,9 @@ return {
 				}
 					]],
 				},
+			},
+			["npm-groovy-lint"] = {
+				prepend_args = { "--fix" },
 			},
 		},
 	},

@@ -1,4 +1,7 @@
 local ensure_installed = {
+	"ruby",
+	"helm",
+	"groovy",
 	"gowork",
 	"comment",
 	"http",
@@ -157,4 +160,5 @@ return {
 	-- 		require("vim.treesitter.language").register("markdown", "telekasten")
 	-- 	end,
 	-- },
+	{ "towolf/vim-helm", ft = "helm" },
 }

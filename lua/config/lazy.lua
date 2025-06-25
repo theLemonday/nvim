@@ -53,31 +53,9 @@ require("lazy").setup({
 			lazy = true,
 			priority = 1000,
 			opts = {
-				-- transparent = true,
+				transparent = true,
 			},
-			init = function()
-				vim.cmd([[colorscheme tokyonight]])
-				-- local timer = vim.uv.new_timer()
-				-- timer:start(
-				-- 	0,
-				-- 	60 * 1000, -- every minute
-				-- 	vim.schedule_wrap(function()
-				-- 		local hours = tonumber(os.date("%H"))
-				-- 		-- local mins = tonumber(os.date("%M"))
-				-- 		-- local secs = tonumber(os.date("%S"))
-				-- 		local dark = false
-				-- 		if hours < 6 or hours > 18 then
-				-- 			dark = true
-				-- 		end
-				--
-				-- 		if dark then
-				-- 			vim.api.nvim_set_option_value("background", "dark", { scope = "global" })
-				-- 		else
-				-- 			vim.api.nvim_set_option_value("background", "light", { scope = "global" })
-				-- 		end
-				-- 	end)
-				-- )
-			end,
+			init = function() vim.cmd([[colorscheme tokyonight]]) end,
 		},
 		{
 			"catppuccin/nvim",

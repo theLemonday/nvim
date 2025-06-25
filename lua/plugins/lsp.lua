@@ -142,6 +142,7 @@ return {
 			"ruff",
 			"tinymist",
 			"harper_ls",
+			"helm_ls",
 		}
 		vim.lsp.enable(ensure_installed)
 	end,
