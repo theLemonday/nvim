@@ -9,6 +9,8 @@ return {
 		require("mini.icons").setup()
 		require("mini.surround").setup({ n_lines = 50 })
 		require("mini.pairs").setup()
+		require("mini.move").setup()
+		require("mini.git").setup()
 
 		-- Better Around/Inside textobjects
 		--

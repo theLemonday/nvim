@@ -25,13 +25,23 @@ return {
 				enable = true,
 			},
 			validate = true,
-			schemaStore = {
-				-- Must disable built-in schemaStore support to use
-				-- schemas from SchemaStore.nvim plugin
-				enable = false,
-				-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-				url = "",
+			schemas = {
+				kubernetes = "k8s-*.yaml",
+				["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+				["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+				["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/**/*.{yml,yaml}",
+				["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+				["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+				["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+				["http://json.schemastore.org/circleciconfig"] = ".circleci/**/*.{yml,yaml}",
 			},
+			-- schemaStore = {
+			-- 	-- Must disable built-in schemaStore support to use
+			-- 	-- schemas from SchemaStore.nvim plugin
+			-- 	enable = false,
+			-- 	-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+			-- 	url = "",
+			-- },
 		},
 	},
 }

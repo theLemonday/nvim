@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("User", {
 
 			vim.notify(
 				-- "AutoSave: saved " .. filename .. " at " .. vim.fn.strftime("%H:%M:%S"),
-				"Auto-saved" .. filename,
+				"Auto-saved " .. filename,
 				vim.log.levels.INFO
 			)
 		end
