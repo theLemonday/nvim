@@ -12,7 +12,7 @@ return {
 				pylsp_black = { enabled = false },
 				pylsp_isort = { enabled = false },
 				rope_autoimport = { enabled = true },
-				-- ruff = { enabled = true },
+				ruff = { enabled = true, formatEnabled = true },
 			},
 		},
 	},

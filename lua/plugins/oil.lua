@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("User", {
 
 return {
 	"stevearc/oil.nvim",
-	dependencies = { "echasnovski/mini.icons" },
+	dependencies = { "nvim-mini/mini.icons" },
 	config = function()
 		require("oil").setup()
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

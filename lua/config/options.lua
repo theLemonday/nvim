@@ -96,19 +96,13 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
-vim.diagnostic.config({
-	virtual_lines = {
-		current_line = true,
-	},
-})
-
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 vim.g.encoding = "Unicode"
 
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 -- Enable spell check
 -- vim.opt.spell = true
 -- vim.opt.spelllang = { "en_us" }

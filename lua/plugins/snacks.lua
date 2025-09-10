@@ -107,21 +107,6 @@ return {
 			-- LSP
 			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-			-- {
-			-- 	"gr",
-			-- 	function()
-			-- 		Snacks.picker.lsp_references()
-			-- 	end,
-			-- 	nowait = true,
-			-- 	desc = "[g]o [r]eferences",
-			-- },
-			-- {
-			-- 	"gI",
-			-- 	function()
-			-- 		Snacks.picker.lsp_implementations()
-			-- 	end,
-			-- 	desc = "[g]o [I]mplementation",
-			-- },
 			{
 				"gy",
 				function() Snacks.picker.lsp_type_definitions() end,
@@ -160,42 +145,7 @@ return {
 			-- git
 			{ "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git Log" },
 			{ "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-		},
-	},
-	{
-		"folke/todo-comments.nvim",
-		optional = true,
-		keys = {
-			{ "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
-			{
-				"<leader>sT",
-				function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
-				desc = "Todo/Fix/Fixme",
-			},
-		},
-	},
-	{
-		"folke/trouble.nvim",
-		optional = true,
-		specs = {
-			"folke/snacks.nvim",
-			opts = function(_, opts)
-				return vim.tbl_deep_extend("force", opts or {}, {
-					picker = {
-						actions = require("trouble.sources.snacks").actions,
-						win = {
-							input = {
-								keys = {
-									["<c-t>"] = {
-										"trouble_open",
-										mode = { "n", "i" },
-									},
-								},
-							},
-						},
-					},
-				})
-			end,
+			{ "<leader>se", function() Snacks.explorer.open() end, desc = "[S]earch [E]xplorer" },
 		},
 	},
 }

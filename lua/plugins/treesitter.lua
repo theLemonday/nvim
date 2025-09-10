@@ -1,37 +1,45 @@
 local ensure_installed = {
-	"ruby",
-	"helm",
-	"groovy",
-	"gowork",
-	"comment",
-	"http",
-	"templ",
-	"svelte",
-	"just",
 	"bash",
 	"c",
+	"caddy",
+	"comment",
+	"css",
 	"dockerfile",
 	"go",
+	"gowork",
+	"groovy",
 	"hcl",
+	"helm",
 	"html",
+	"http",
+	"javascript",
 	"json",
 	"json5",
 	"jsonc",
+	"just",
+	"latex",
 	"lua",
 	"luadoc",
 	"markdown",
-	"latex",
+	"nix",
+	"norg",
 	"python",
+	"regex",
+	"ruby",
+	"scss",
+	"svelte",
+	"templ",
 	"terraform",
 	"toml",
 	"tsx",
 	"typescript",
+	"typst",
 	"vim",
 	"vimdoc",
+	"vue",
 	"xml",
 	"yaml",
-	"css",
-	"nix",
+	"r",
 }
 
 return {
@@ -39,12 +47,9 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		branch = "main",
-		-- event = { "VeryLazy" },
-		-- cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-		-- lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-		-- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		build = ":TSUpdate",
 		opts = {
-			ensure_installed = ensure_installed,
+			ensure_installed = "all",
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
@@ -55,6 +60,10 @@ return {
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby", "yaml" } },
+			context_commentstring = {
+				enable = true,
+				enable_autocmd = false, -- important! mini.comment handles it
+			},
 			-- select = {
 			-- 	enable = true,
 			--
@@ -141,24 +150,10 @@ return {
 		-- 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		-- end,
 	},
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
-	-- 	event = "VeryLazy",
-	-- 	enabled = true,
-	-- 	lazy = true,
-	-- 	config = function()
-	-- 		require("nvim-treesitter.configs").setup({
-	-- 			textobjects = {
-	-- 				select = {
-	-- 					enable = true,
-	--
-	-- 					-- Automatically jump forward to textobj, similar to targets.vim
-	-- 					lookahead = true,
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 		require("vim.treesitter.language").register("markdown", "telekasten")
-	-- 	end,
-	-- },
 	{ "towolf/vim-helm", ft = "helm" },
+	{
+		"windwp/nvim-ts-autotag",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function() require("nvim-ts-autotag").setup() end,
+	},
 }

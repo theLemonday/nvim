@@ -1,7 +1,7 @@
 return {
 	settings = {
 		basedpyright = {
-			-- disableOrganizeImports = true,
+			disableOrganizeImports = true,
 			-- diagnosticSeverityOverrides = {
 			-- 	reportMissingTypeAnnotation = "none",
 			-- },

@@ -10,15 +10,8 @@ return {
 					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 
-					-- Load the wezterm types when the `wezterm` module is required
-					-- Needs `justinsgithub/wezterm-types` to be installed
-					{ path = "wezterm-types", mods = { "wezterm" } },
-
 					{ path = "snacks.nvim", words = { "Snacks" } },
 				},
-			},
-			dependencies = {
-				"justinsgithub/wezterm-types",
 			},
 		},
 		"b0o/schemastore.nvim",
@@ -126,10 +119,15 @@ return {
 			root_markers = { ".git" },
 		})
 
-		local ensure_installed = {
+		vim.lsp.enable({
 			"ansiblels",
-			-- "basedpyright",
-			"pylsp",
+			-- "ty",
+			"basedpyright",
+			"clangd",
+			-- "pylsp",
+			-- "bufls",
+			"tailwindcss",
+			"buf_ls",
 			"dockerls",
 			"gopls",
 			"jsonls",
@@ -140,10 +138,12 @@ return {
 			"terraformls",
 			"yamlls",
 			"ruff",
-			"tinymist",
+			-- "tinymist",
 			"harper_ls",
 			"helm_ls",
-		}
-		vim.lsp.enable(ensure_installed)
+			-- "ts_ls",
+			"vtsls",
+			"vue_ls",
+		})
 	end,
 }

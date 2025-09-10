@@ -1,11 +1,11 @@
 vim.filetype.add({
 	extension = {
-		env = "dotenv",
+		env = "sh",
 	},
 	filename = {
-		[".env"] = "dotenv",
+		[".env"] = "sh",
 	},
 	pattern = {
-		["%.env%.[%w_.-]+"] = "dotenv",
+		["%.env%.[%w_.-]+"] = "sh",
 	},
 })

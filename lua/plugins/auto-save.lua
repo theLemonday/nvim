@@ -1,3 +1,4 @@
+local autoSaveExcludedFiletypess = { "oil" }
 local group = vim.api.nvim_create_augroup("autosave", {})
 
 vim.api.nvim_create_autocmd("User", {
@@ -5,14 +6,9 @@ vim.api.nvim_create_autocmd("User", {
 	group = group,
 	callback = function(opts)
 		if opts.data.saved_buffer ~= nil then
-			-- local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
 			local filename = vim.fn.expand("%:t")
 
-			vim.notify(
-				-- "AutoSave: saved " .. filename .. " at " .. vim.fn.strftime("%H:%M:%S"),
-				"Auto-saved " .. filename,
-				vim.log.levels.INFO
-			)
+			vim.notify("Auto saved " .. filename, vim.log.levels.INFO)
 		end
 	end,
 })
@@ -28,7 +24,7 @@ return {
 			local utils = require("auto-save.utils.data")
 
 			-- don't save for file types
-			if utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil", "markdown" }) then
+			if utils.not_in(fn.getbufvar(buf, "&filetype"), autoSaveExcludedFiletypess) then
 				return true
 			end
 			return false

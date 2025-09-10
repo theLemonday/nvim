@@ -2,6 +2,7 @@ return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
+			fish = { "fish_indent" },
 			lua = { "stylua" },
 			go = { "goimports", "gofumpt", "golines" },
 			terraform = { "terraform_fmt" },
@@ -14,10 +15,11 @@ return {
 				"ruff_format",
 			},
 			nix = { "nixpkgs_fmt" },
-			-- buf = { "buf" },
+			buf = { "buf" },
 			javascript = { "prettierd" },
 			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
+			vue = { "prettierd" },
 			sql = { "sql_formatter" },
 			-- sql = { "sqlfluff" },
 			bash = { "shfmt" },
@@ -28,8 +30,13 @@ return {
 			html = { "prettierd" },
 			-- templ = { "templ" },
 			json = { "prettierd" },
+			jsonc = { "prettierd" },
 			markdown = { "prettierd" },
 			groovy = { "npm-groovy-lint" },
+			caddyfile = { "caddy_fmt" },
+			r = { "styler" },
+			cpp = { "clang_format" },
+			c = { "clang_format" },
 		},
 		format_on_save = function(bufnr)
 			local max_lines = 5000
@@ -40,6 +47,10 @@ return {
 			return { timeout_ms = 2000, lsp_fallback = true }
 		end,
 		formatters = {
+			caddy_fmt = {
+				command = "caddy",
+				args = { "fmt", "-" },
+			},
 			yamlfix = {
 				env = {
 					YAMLFIX_WHITELINES = 1,

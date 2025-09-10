@@ -1,5 +1,5 @@
 return {
-	"echasnovski/mini.nvim",
+	"nvim-mini/mini.nvim",
 	version = "*",
 	dependencies = {
 		"folke/snacks.nvim",
@@ -11,6 +11,14 @@ return {
 		require("mini.pairs").setup()
 		require("mini.move").setup()
 		require("mini.git").setup()
+		require("mini.comment").setup({
+			options = {
+				custom_commentstring = function()
+					return require("ts_context_commentstring.internal").calculate_commentstring()
+						or vim.bo.commentstring
+				end,
+			},
+		})
 
 		-- Better Around/Inside textobjects
 		--
@@ -18,7 +26,27 @@ return {
 		--  - va)  - [V]isually select [A]round [)]paren
 		--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
 		--  - ci'  - [C]hange [I]nside [']quote
-		require("mini.ai").setup({ n_lines = 500 })
+		require("mini.ai").setup({
+			n_lines = 500,
+			custom_textobjects = {
+				o = require("mini.ai").gen_spec.treesitter({
+					a = "@block.outer",
+					i = "@block.inner",
+				}),
+				f = require("mini.ai").gen_spec.treesitter({
+					a = "@function.outer",
+					i = "@function.inner",
+				}),
+				c = require("mini.ai").gen_spec.treesitter({
+					a = "@class.outer",
+					i = "@class.inner",
+				}),
+				t = require("mini.ai").gen_spec.treesitter({
+					a = "@tag.outer",
+					i = "@tag.inner",
+				}),
+			},
+		})
 		-- local gen_spec = require("mini.ai").gen_spec
 		-- require("mini.ai").setup({
 		-- 	n_lines = 500,
