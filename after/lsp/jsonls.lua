@@ -1,24 +1,11 @@
-return {
-	cmd = { "vscode-json-languageserver", "--stdio" },
-	settings = {
-		json = {
-			schemas = require("schemastore").json.schemas({
-				extra = {
-					{
-						description = "App script config file",
-						name = "appsscript.json",
-						fileMatch = { "appsscript.json" },
-						url = "https://json.schemastore.org/appsscript",
-					},
-					{
-						description = "Clasp config file",
-						name = ".clasp.json",
-						fileMatch = { ".clasp.json" },
-						url = "https://json.schemastore.org/clasp",
-					},
-				},
-			}),
-			validate = { enable = true },
+return require("schema-companion").setup_client(
+	require("schema-companion").adapters.jsonls.setup({
+		sources = {
+			require("schema-companion").sources.lsp.setup(),
+			require("schema-companion").sources.none.setup(),
 		},
-	},
-}
+	}),
+	{
+		--- your language server configuration
+	}
+)
