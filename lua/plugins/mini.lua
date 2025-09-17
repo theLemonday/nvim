@@ -40,24 +40,24 @@ return {
 		--  - ci'  - [C]hange [I]nside [']quote
 		require("mini.ai").setup({
 			n_lines = 500,
-			custom_textobjects = {
-				o = require("mini.ai").gen_spec.treesitter({
-					a = "@block.outer",
-					i = "@block.inner",
-				}),
-				f = require("mini.ai").gen_spec.treesitter({
-					a = "@function.outer",
-					i = "@function.inner",
-				}),
-				c = require("mini.ai").gen_spec.treesitter({
-					a = "@class.outer",
-					i = "@class.inner",
-				}),
-				t = require("mini.ai").gen_spec.treesitter({
-					a = "@tag.outer",
-					i = "@tag.inner",
-				}),
-			},
+			-- custom_textobjects = {
+			-- 	o = require("mini.ai").gen_spec.treesitter({
+			-- 		a = "@block.outer",
+			-- 		i = "@block.inner",
+			-- 	}),
+			-- 	f = require("mini.ai").gen_spec.treesitter({
+			-- 		a = "@function.outer",
+			-- 		i = "@function.inner",
+			-- 	}),
+			-- 	c = require("mini.ai").gen_spec.treesitter({
+			-- 		a = "@class.outer",
+			-- 		i = "@class.inner",
+			-- 	}),
+			-- 	t = require("mini.ai").gen_spec.treesitter({
+			-- 		a = "@tag.outer",
+			-- 		i = "@tag.inner",
+			-- 	}),
+			-- },
 		})
 	end,
 	keys = {
