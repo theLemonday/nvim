@@ -1,5 +1,6 @@
 local ensure_installed = {
 	"json-lsp",
+	"templ",
 }
 return {
 	"mason-org/mason-lspconfig.nvim",

@@ -28,7 +28,7 @@ return {
 			css = { "prettierd" },
 			-- jinja = { "djlint" },
 			html = { "prettierd" },
-			-- templ = { "templ" },
+			templ = { "templ" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
 			markdown = { "prettierd" },

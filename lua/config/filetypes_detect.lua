@@ -1,5 +1,10 @@
 vim.filetype.add({
+	extension = { templ = "templ", env = "sh", service = "systemd" },
 	pattern = {
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+
 		[".*/defaults/.*%.ya?ml"] = "yaml.ansible",
 		[".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
 		[".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
@@ -10,5 +15,17 @@ vim.filetype.add({
 		[".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
 		[".*/tasks/.*%.ya?ml"] = "yaml.ansible",
 		[".*/molecule/.*%.ya?ml"] = "yaml.ansible",
+
+		["Caddyfile.*"] = "caddyfile",
+
+		["%.env%.[%w_.-]+"] = "sh",
+	},
+	filename = {
+		-- ["justfile"] = "make",
+		-- ["Justfile"] = "make",
+
+		["Caddyfile"] = "caddyfile",
+
+		[".env"] = "sh",
 	},
 })

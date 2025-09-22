@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesActionRename",
+	callback = function(event) Snacks.rename.on_rename_file(event.data.from, event.data.to) end,
+})
+
 return {
 	"nvim-mini/mini.nvim",
 	version = "*",
@@ -19,6 +24,13 @@ return {
 				end,
 			},
 		})
+
+		require("mini.files").setup({
+			options = { permanent_delete = false },
+			windows = { preview = true },
+		})
+
+		require("mini.notify").setup()
 
 		-- Better Around/Inside textobjects
 		--
@@ -47,17 +59,8 @@ return {
 				}),
 			},
 		})
-		-- local gen_spec = require("mini.ai").gen_spec
-		-- require("mini.ai").setup({
-		-- 	n_lines = 500,
-		-- 	custom_textobjects = {
-		-- 		-- Function definition (needs treesitter queries with these captures)
-		-- 		f = gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-		-- 		c = gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-		--
-		-- 		-- Make `|` select both edges in non-balanced way
-		-- 		["|"] = gen_spec.pair("|", "|", { type = "non-balanced" }),
-		-- 	},
-		-- })
 	end,
+	keys = {
+		{ "-", function() MiniFiles.open(vim.fn.expand("%:p:h")) end, desc = "Open MiniFiles" },
+	},
 }
