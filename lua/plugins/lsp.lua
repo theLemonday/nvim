@@ -110,11 +110,8 @@ return {
 
 		vim.lsp.enable({
 			"ansiblels",
-			-- "ty",
 			"basedpyright",
 			"clangd",
-			-- "pylsp",
-			-- "bufls",
 			"tailwindcss",
 			"buf_ls",
 			"dockerls",
@@ -131,6 +128,9 @@ return {
 			"yamlls",
 			"ruff",
 			"harper_ls",
+			"terraformls",
+			"yamlls",
+			"ruff",
 			"helm_ls",
 			"vtsls",
 			"vue_ls",
