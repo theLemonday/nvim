@@ -110,7 +110,8 @@ return {
 
 		vim.lsp.enable({
 			"ansiblels",
-			"basedpyright",
+			-- "basedpyright",
+			"ty",
 			"clangd",
 			"tailwindcss",
 			"buf_ls",
