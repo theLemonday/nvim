@@ -19,6 +19,22 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = "unnamedplus"
+
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = "powershell.exe -NoProfile -Command Get-Clipboard",
+			["*"] = "powershell.exe -NoProfile -Command Get-Clipboard",
+		},
+		cache_enabled = false,
+	}
+end
+
 -- vim.g.clipboard = {
 -- 	name = "wl-clipboard",
 -- 	copy = {

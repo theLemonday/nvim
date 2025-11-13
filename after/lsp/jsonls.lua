@@ -7,5 +7,11 @@ return require("schema-companion").setup_client(
 	}),
 	{
 		--- your language server configuration
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+			},
+		},
 	}
 )
