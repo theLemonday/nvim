@@ -6,7 +6,7 @@ return {
 	---@type render.md.UserConfig
 	opts = {
 		heading = { position = "inline" },
-		completions = { blink = { enabled = true } },
+		completions = { lsp = { enabled = true }, blink = { enabled = true } },
 		preset = "obsidian",
 		max_file_size = 10.0,
 		render_modes = true,
