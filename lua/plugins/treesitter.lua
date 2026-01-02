@@ -1,8 +1,8 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
 		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = "all",
@@ -16,7 +16,7 @@ return {
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby", "yaml" } },
+			indent = { enable = true },
 			context_commentstring = {
 				enable = true,
 				enable_autocmd = false, -- important! mini.comment handles it

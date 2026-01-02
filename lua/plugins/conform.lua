@@ -2,11 +2,13 @@ return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
-			fish = { "fish_indent" },
+			dockerfile = { "dockerfmt" },
+			-- make = { "mbake" },
+			-- fish = { "fish_indent" },
 			lua = { "stylua" },
 			go = { "goimports", "gofumpt", "golines" },
-			terraform = { "terraform_fmt" },
-			["terraform-vars"] = { "terraform_fmt" },
+			-- terraform = { "terraform_fmt" },
+			-- ["terraform-vars"] = { "terraform_fmt" },
 			python = {
 				"ruff_organize_imports",
 				-- To fix lint errors.
@@ -24,15 +26,15 @@ return {
 			-- sql = { "sqlfluff" },
 			bash = { "shfmt" },
 			yaml = { "yamlfix" },
-			graphql = { "prettierd" },
+			-- graphql = { "prettierd" },
 			css = { "prettierd" },
 			-- jinja = { "djlint" },
 			html = { "prettierd" },
-			templ = { "templ" },
+			-- templ = { "templ" },
 			json = { "prettierd" },
 			jsonc = { "prettierd" },
 			markdown = { "prettierd" },
-			groovy = { "npm-groovy-lint" },
+			-- groovy = { "npm-groovy-lint" },
 			caddyfile = { "caddy_fmt" },
 			r = { "styler" },
 			cpp = { "clang_format" },
@@ -71,6 +73,7 @@ return {
 			["npm-groovy-lint"] = {
 				prepend_args = { "--fix" },
 			},
+			mbake = { args = { "format", "$FILENAME" } },
 		},
 	},
 }

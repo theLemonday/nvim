@@ -1,6 +1,7 @@
 vim.filetype.add({
 	extension = { templ = "templ", env = "sh", service = "systemd" },
 	pattern = {
+
 		[".*/templates/.*%.tpl"] = "helm",
 		[".*/templates/.*%.ya?ml"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
@@ -23,6 +24,7 @@ vim.filetype.add({
 	filename = {
 		-- ["justfile"] = "make",
 		-- ["Justfile"] = "make",
+		[".pre-commit-config.yaml"] = "yaml.pre-commit",
 
 		["Caddyfile"] = "caddyfile",
 
