@@ -1,5 +1,5 @@
 vim.filetype.add({
-	extension = { templ = "templ", env = "sh", service = "systemd" },
+	extension = { templ = "templ", env = "sh", service = "systemd", http = "http" },
 	pattern = {
 
 		[".*/templates/.*%.tpl"] = "helm",

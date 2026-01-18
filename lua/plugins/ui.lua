@@ -9,27 +9,27 @@ return {
 		"RRethy/base16-nvim",
 		init = function() vim.cmd("colorscheme base16-" .. theme) end,
 	},
-	{
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
-		priority = 1000,
-		config = function()
-			require("tiny-inline-diagnostic").setup({
-				preset = "classic",
-				options = {
-					show_source = {
-						if_many = true,
-					},
-					multilines = { enabled = true },
-					severity = {
-						vim.diagnostic.severity.ERROR,
-						vim.diagnostic.severity.WARN,
-					},
-				},
-			})
-			vim.diagnostic.config({ virtual_text = false }) -- Disable default virtual text
-		end,
-	},
+	-- {
+	-- 	"rachartier/tiny-inline-diagnostic.nvim",
+	-- 	event = "VeryLazy",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("tiny-inline-diagnostic").setup({
+	-- 			preset = "classic",
+	-- 			options = {
+	-- 				show_source = {
+	-- 					if_many = true,
+	-- 				},
+	-- 				multilines = { enabled = true },
+	-- 				severity = {
+	-- 					vim.diagnostic.severity.ERROR,
+	-- 					vim.diagnostic.severity.WARN,
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 		vim.diagnostic.config({ virtual_text = false }) -- Disable default virtual text
+	-- 	end,
+	-- },
 	{
 		"folke/trouble.nvim",
 		optional = true,

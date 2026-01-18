@@ -74,7 +74,7 @@ return {
 					"path",
 					"snippets",
 					"buffer",
-					"markdown",
+					-- "markdown",
 				},
 				per_filetype = {
 					sql = { "snippets", "dadbod", "buffer" },

@@ -13,7 +13,7 @@ return {
 		require("mini.statusline").setup()
 		require("mini.icons").setup()
 		require("mini.surround").setup({ n_lines = 50 })
-		-- require("mini.pairs").setup()
+		require("mini.pairs").setup()
 		require("mini.move").setup()
 		require("mini.git").setup()
 		require("mini.comment").setup({

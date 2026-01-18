@@ -3,11 +3,7 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -130,5 +126,46 @@ vim.api.nvim_create_user_command("ToggleVietnameseKeyboard", function()
 		vim.o.keymap = vietnameseKeyboard
 	end
 end, {})
+
+-- Diagnostics ================================================================
+-- Conservative but useful diagnostic display
+
+local diagnostic_opts = {
+	-- Show signs only for warnings and errors, with high priority
+	signs = {
+		priority = 9999,
+		severity = {
+			min = vim.diagnostic.severity.WARN,
+			max = vim.diagnostic.severity.ERROR,
+		},
+	},
+
+	-- Underline all diagnostics
+	underline = {
+		severity = {
+			min = vim.diagnostic.severity.HINT,
+			max = vim.diagnostic.severity.ERROR,
+		},
+	},
+
+	-- Virtual text only for errors on current line
+	virtual_lines = false,
+	virtual_text = {
+		current_line = true,
+		severity = {
+			min = vim.diagnostic.severity.ERROR,
+			max = vim.diagnostic.severity.ERROR,
+		},
+	},
+
+	-- Don't update diagnostics while typing
+	update_in_insert = false,
+}
+
+-- Apply after startup (safe with lazy.nvim)
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	callback = function() vim.diagnostic.config(diagnostic_opts) end,
+})
 
 -- vim.opt.scrolloff = 999
