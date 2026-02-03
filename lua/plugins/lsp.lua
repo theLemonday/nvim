@@ -107,31 +107,18 @@ return {
 		})
 
 		vim.lsp.enable({
-			-- "ansiblels",
-			-- "basedpyright",
 			"ty",
 			"clangd",
-			-- "tailwindcss",
-			-- "buf_ls",
 			"dockerls",
 			"gopls",
 			"jsonls",
 			"lua_ls",
 			"nil_ls",
-			-- "sqlls",
-			-- "templ",
-			-- "htmx",
 			"html",
-			-- "taplo",
-			-- "terraformls",
 			"yamlls",
 			"ruff",
-			-- "harper_ls",
-			-- "terraformls",
 			"ruff",
 			"helm_ls",
-			"vtsls",
-			"vue_ls",
 		})
 	end,
 }

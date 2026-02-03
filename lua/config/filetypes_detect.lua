@@ -2,9 +2,9 @@ vim.filetype.add({
 	extension = { templ = "templ", env = "sh", service = "systemd", http = "http" },
 	pattern = {
 
-		[".*/templates/.*%.tpl"] = "helm",
-		[".*/templates/.*%.ya?ml"] = "helm",
-		["helmfile.*%.ya?ml"] = "helm",
+		-- [".*/templates/.*%.tpl"] = "helm",
+		-- [".*/templates/.*%.ya?ml"] = "helm",
+		-- ["helmfile.*%.ya?ml"] = "helm",
 
 		[".*/defaults/.*%.ya?ml"] = "yaml.ansible",
 		[".*/host_vars/.*%.ya?ml"] = "yaml.ansible",

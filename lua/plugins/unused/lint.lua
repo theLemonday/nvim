@@ -5,15 +5,11 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
+				dockerfile = { "hadolint" },
 				markdown = { "markdownlint" },
-				sql = { "sqlfluff" },
-				sh = { "shellcheck" },
-				ansible = { "ansible_lint" },
-				jinja = { "djlint" },
-				systemd = { "systemdlint" },
-				dotenv = { "dotenv_linter" },
 				yaml = { "yamllint" },
-				groovy = { "npm-groovy-lint" },
+				go = { "golangcilint" },
+				python = { "ruff" },
 			}
 
 			lint.linters.markdownlint.args = { "--config", vim.fn.expand("~/.markdownlint.json") }
