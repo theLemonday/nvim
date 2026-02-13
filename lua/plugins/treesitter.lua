@@ -23,7 +23,7 @@ return {
 			},
 		},
 	},
-	{ "towolf/vim-helm", ft = "helm" },
+	-- { "towolf/vim-helm", ft = "helm" },
 	{
 		"windwp/nvim-ts-autotag",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },

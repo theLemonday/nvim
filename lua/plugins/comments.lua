@@ -1,5 +1,5 @@
 return {
-	{ "LudoPinelli/comment-box.nvim", opts = {} },
+	-- { "LudoPinelli/comment-box.nvim", opts = {} },
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
